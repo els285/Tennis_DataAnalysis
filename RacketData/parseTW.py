@@ -15,10 +15,11 @@ def SplitNConvert(txt):
 	import re
 
 	t = txt.split("/")
-	t0=re.findall('\d*\.?\d+',t[0])[0]
-	t1=re.findall('\d*\.?\d+',t[1])[0]
-	t0,t1 = float(t0),float(t1)
-	return t0,t1
+	t0b = t[0].replace(",",".")
+	t0f = re.findall(r"[-+]?\d*\.\d+|\d+",t0b)
+	t1b = t[1].replace(",",".")
+	t1f = re.findall(r"[-+]?\d*\.\d+|\d+",t1b)
+	return float(t0f[0]),float(t1f[0])
 
 	# return (float(re.sub(r"^\d*[.,]*$", "",t[0]))   ,  float(re.sub(r"^\d*[.,]*$", "",t[1]))) 
 
